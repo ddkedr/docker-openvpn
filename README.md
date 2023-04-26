@@ -30,7 +30,7 @@ a corresponding [Digital Ocean Community Tutorial](http://bit.ly/1AGUZkq).
   and certificates.  The container will prompt for a passphrase to protect the
   private key used by the newly generated certificate authority.
   
-      docker volume create --name $OVPN_DATA
+      #docker volume create --name $OVPN_DATA — We do not need this since we are mounting a working directory
       docker run -v $OVPN_DATA:/etc/openvpn --rm kylemanna/openvpn ovpn_genconfig -u udp://VPN.SERVERNAME.COM
       docker run -e EASYRSA_KEY_SIZE=4096 -v $OVPN_DATA:/etc/openvpn --rm -it kylemanna/openvpn ovpn_initpki
 
