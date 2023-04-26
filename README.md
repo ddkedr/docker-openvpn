@@ -19,28 +19,28 @@ a corresponding [Digital Ocean Community Tutorial](http://bit.ly/1AGUZkq).
 
 ## Quick Start
 
-* Pick a name for the `$OVPN_DATA` data volume container. It's recommended to
-  use the `ovpn-data-` prefix to operate seamlessly with the reference systemd
-  service.  Users are encourage to replace `example` with a descriptive name of
-  their choosing.
+* Pick a name for the `$OVPN_DATA` directory containing our OpenVPN congfig
+  Additionally, set a hostname for the current server (It will be used in Telegram notification, for example)
 
-      OVPN_DATA="ovpn-data-example"
+      OVPN_DATA="/root/vpn-data"
+      HOSTNAME="FRA"
+      
 
 * Initialize the `$OVPN_DATA` container that will hold the configuration files
   and certificates.  The container will prompt for a passphrase to protect the
   private key used by the newly generated certificate authority.
-
+  
       docker volume create --name $OVPN_DATA
       docker run -v $OVPN_DATA:/etc/openvpn --rm kylemanna/openvpn ovpn_genconfig -u udp://VPN.SERVERNAME.COM
-      docker run -v $OVPN_DATA:/etc/openvpn --rm -it kylemanna/openvpn ovpn_initpki
+      docker run -e EASYRSA_KEY_SIZE=4096 -v $OVPN_DATA:/etc/openvpn --rm -it kylemanna/openvpn ovpn_initpki
 
 * Start OpenVPN server process
 
-      docker run -v /root/vpn-data:/etc/openvpn -d -p 1194:1194/udp --hostname=FRA --cap-add=NET_ADMIN ovpn-ddkedr
+      docker run -v $OVPN_DATA:/etc/openvpn -d -p 1194:1194/udp --hostname=$HOSTNAME --cap-add=NET_ADMIN ovpn-ddkedr
 
 * Generate a client certificate without a passphrase
 
-      docker run -v $OVPN_DATA:/etc/openvpn --rm -it kylemanna/openvpn easyrsa build-client-full CLIENTNAME nopass
+      docker run -e EASYRSA_KEY_SIZE=4096 -v $OVPN_DATA:/etc/openvpn --rm -it kylemanna/openvpn easyrsa build-client-full CLIENTNAME nopass
 
 * Retrieve the client configuration with embedded certificates
 
