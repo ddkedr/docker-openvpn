@@ -22,8 +22,9 @@ a corresponding [Digital Ocean Community Tutorial](http://bit.ly/1AGUZkq).
 * Pick a name for the `$OVPN_DATA` directory containing our OpenVPN congfig
   Additionally, set a hostname for the current server (It will be used in Telegram notification, for example)
 
-      OVPN_DATA="/root/vpn-data"
+      OVPN_DATA="/home/USERNAME/vpn-data"
       HOSTNAME="FRA"
+      URL="fra.ddkedr.me"
       
 
 * Initialize the `$OVPN_DATA` container that will hold the configuration files
@@ -32,7 +33,7 @@ a corresponding [Digital Ocean Community Tutorial](http://bit.ly/1AGUZkq).
   
       #docker volume create --name $OVPN_DATA — We do not need this since we are mounting a working directory
       
-      docker run -v $OVPN_DATA:/etc/openvpn --rm kylemanna/openvpn ovpn_genconfig -u udp://VPN.SERVERNAME.COM
+      docker run -v $OVPN_DATA:/etc/openvpn --rm ovpn-ddkedr ovpn_genconfig -u udp://lon.ddkedr.me
       docker run -e EASYRSA_KEY_SIZE=4096 -v $OVPN_DATA:/etc/openvpn --rm -it kylemanna/openvpn ovpn_initpki
 
 * Start OpenVPN server process
