@@ -18,8 +18,9 @@ To use and enable automatic start by systemd:
    user's choice to describe the use of the container.  In this example
    configuration, `NAME=example`.
    
-        OVPN_DATA="ovpn-data-example"
-        docker volume create --name $OVPN_DATA
+      OVPN_DATA="/home/USERNAME/vpn-data"
+      HOSTNAME="FRA"
+      URL="fra.ddkedr.me"
    
 2. Initialize the data container, but don't start the container :
    
@@ -29,15 +30,15 @@ To use and enable automatic start by systemd:
 3. Download the [docker-openvpn@.service](https://raw.githubusercontent.com/kylemanna/docker-openvpn/master/init/docker-openvpn%40.service)
    file to `/etc/systemd/system`:
 
-        curl -L https://raw.githubusercontent.com/kylemanna/docker-openvpn/master/init/docker-openvpn%40.service | sudo tee /etc/systemd/system/docker-openvpn@.service
+        curl -L https://raw.githubusercontent.com/ddkedr/docker-openvpn/master/init/docker-openvpn%40.service | sudo tee /etc/systemd/system/docker-openvpn@.service
 
 4. Enable and start the service with:
 
-        systemctl enable --now docker-openvpn@example.service
+        systemctl enable --now docker-openvpn@ddkedr.service
 
 5. Verify service start-up with:
 
-        systemctl status docker-openvpn@example.service
-        journalctl --unit docker-openvpn@example.service
+        systemctl status docker-openvpn@ddkedr.service
+        journalctl --unit docker-openvpn@ddkedr.service
 
 For more information, see the [systemd manual pages](https://www.freedesktop.org/software/systemd/man/index.html).
