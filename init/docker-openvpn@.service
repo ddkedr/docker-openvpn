@@ -31,8 +31,8 @@
 # For more information, see the systemd manual pages.
 #
 [Unit]
-Description=OpenVPN Docker Container
-Documentation=https://github.com/kylemanna/docker-openvpn
+Description=ddkedr's OpenVPN Docker Container
+Documentation=https://github.com/ddkedr/docker-openvpn
 After=network.target docker.service
 Requires=docker.service
 
