@@ -47,7 +47,7 @@ Environment="NAME=ovpn-%i"
 Environment="DATA_VOL=/home/ddkedr/ovpn-data-%i"
 Environment="IMG=ovpn-ddkedr"
 Environment="PORT=1194:1194/udp"
-Environment="HOSTNAME=lon.ddkedr.me"
+Environment="HOSTNAME=LON"
 
 # To override environment variables, use local configuration directory:
 # /etc/systemd/system/docker-openvpn@foo.d/local.conf
