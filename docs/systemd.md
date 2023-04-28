@@ -32,11 +32,15 @@ To use and enable automatic start by systemd:
 
         curl -L https://raw.githubusercontent.com/ddkedr/docker-openvpn/master/init/docker-openvpn%40.service | sudo tee /etc/systemd/system/docker-openvpn@.service
 
-4. Enable and start the service with:
+4. Edit variable is docker-openvpn%40.service file
+
+         HOSTNAME, IMAGE NAME ETC
+
+5. Enable and start the service with:
 
         systemctl enable --now docker-openvpn@ddkedr.service
 
-5. Verify service start-up with:
+6. Verify service start-up with:
 
         systemctl status docker-openvpn@ddkedr.service
         journalctl --unit docker-openvpn@ddkedr.service
