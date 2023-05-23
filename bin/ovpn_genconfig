@@ -374,6 +374,11 @@ if [ "$OVPN_COMP_LZO" == "0" ]; then
     process_push_config "comp-lzo no"
 fi
 
+#Used this here in server config instead of client's
+if [ "$OVPN_DEFROUTE" != "0" ]; then
+    process_push_config "redirect-gateway def1"
+fi
+
 [ ${#OVPN_PUSH[@]} -gt 0 ] && for i in "${OVPN_PUSH[@]}"; do
   process_push_config "$i"
 done
