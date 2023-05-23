@@ -351,8 +351,10 @@ fi
 [ -n "$OVPN_AUTH" ] && echo "auth $OVPN_AUTH" >> "$conf"
 
 [ -n "${OVPN_CLIENT_TO_CLIENT:-}" ] && echo "client-to-client" >> "$conf"
-[ "$OVPN_COMP_LZO" == "1" ] && echo "comp-lzo" >> "$conf"
-[ "$OVPN_COMP_LZO" == "0" ] && echo "comp-lzo no" >> "$conf"
+
+# Commenting out DEPRECATED Options
+# [ "$OVPN_COMP_LZO" == "1" ] && echo "comp-lzo" >> "$conf"
+# [ "$OVPN_COMP_LZO" == "0" ] && echo "comp-lzo no" >> "$conf"
 
 [ -n "${OVPN_FRAGMENT:-}" ] && echo "fragment $OVPN_FRAGMENT" >> "$conf"
 
@@ -370,9 +372,10 @@ fi
   process_push_config "dhcp-option DNS $i"
 done
 
-if [ "$OVPN_COMP_LZO" == "0" ]; then
-    process_push_config "comp-lzo no"
-fi
+# Commenting out DEPRECATED Options
+#if [ "$OVPN_COMP_LZO" == "0" ]; then
+#    process_push_config "comp-lzo no"
+#fi
 
 #Used this here in server config instead of client's
 if [ "$OVPN_DEFROUTE" != "0" ]; then
