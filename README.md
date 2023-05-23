@@ -43,7 +43,7 @@ a corresponding [Digital Ocean Community Tutorial](http://bit.ly/1AGUZkq).
 
 * Start OpenVPN server process
 
-      docker run -v $OVPN_DATA:/etc/openvpn -d -p 1195:1195/udp --hostname=$HOSTNAME --cap-add=NET_ADMIN ovpn-ddkedr
+      docker run -v $OVPN_DATA:/etc/openvpn -d -p 1195:1195/udp --hostname=$HOSTNAME --cap-add=NET_ADMIN --name ovpn-ddkedr ovpn-ddkedr
 
 * Generate a client certificate without a passphrase
 
