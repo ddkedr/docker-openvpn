@@ -9,9 +9,9 @@ Execute the following commands. Note that you might want to change the volume `$
     OVPN_DATA="/home/USERNAME/vpn-data"
     URL="fra.ddkedr.me"
     
-    docker run --net=none --rm -t -i -v $PWD:/etc/openvpn ovpn-ddkedr ovpn_genconfig -u udp://$URL
-    docker run --net=none --rm -t -i -v $PWD:/etc/openvpn ovpn-ddkedr ovpn_initpki
-    docker run --net=none --rm -t -i -v $PWD:/etc/openvpn ovpn-ddkedr ovpn_copy_server_files
+    docker run --net=none --rm -t -i -v $OVPN_DATA:/etc/openvpn ovpn-ddkedr ovpn_genconfig -u udp://$URL
+    docker run --net=none --rm -t -i -v $OVPN_DATA:/etc/openvpn ovpn-ddkedr ovpn_initpki
+    docker run --net=none --rm -t -i -v $OVPN_DATA:/etc/openvpn ovpn-ddkedr ovpn_copy_server_files
 
 The [`ovpn_copy_server_files`](/bin/ovpn_copy_server_files) script puts all the needed configuration in a subdirectory which defaults to `$OPENVPN/server`. All you need to do now is to copy this directory to the server and you are good to go.
 
