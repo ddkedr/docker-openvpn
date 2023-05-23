@@ -336,6 +336,14 @@ port 1194
 dev $OVPN_DEVICE$OVPN_DEVICEN
 status /tmp/openvpn-status.log
 
+### UP DOWN Notification Triggers
+script-security 2
+client-connect /etc/openvpn/conn_trac.sh
+client-disconnect /etc/openvpn/conn_trac.sh
+
+### Telnet Management
+management 172.17.0.2 7505
+
 user nobody
 group nogroup
 EOF
