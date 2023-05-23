@@ -28,7 +28,7 @@ CMD ["ovpn_run"]
 
 ADD ./bin /usr/local/bin
 RUN chmod a+x /usr/local/bin/*
-ADD ./conf_files/conn_trac.sh /etc/openvpn
+ADD ./conf_files/conn_trac.sh /tmp/
 RUN chmod a+x /etc/openvpn/conn_trac.sh
 
 # Add support for OTP authentication using a PAM module
