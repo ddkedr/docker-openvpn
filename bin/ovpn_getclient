@@ -48,7 +48,7 @@ remote $OVPN_CN $OVPN_PORT $OVPN_PROTO"
     for i in "${OVPN_EXTRA_CLIENT_CONFIG[@]}"; do
       echo "$i"
     done
-    if ((  "$mode" == "combined" || "$mode" == "combined-save" ));
+    if ((  "$mode" == "combined" || "$mode" == "combined-save" )); then
         echo "
 explicit-exit-notify 3        
 <key>
