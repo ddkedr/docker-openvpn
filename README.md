@@ -19,6 +19,11 @@ a corresponding [Digital Ocean Community Tutorial](http://bit.ly/1AGUZkq).
 
 ## Quick Start
 
+#Build Docker Container
+      
+      git clone https://github.com/ddkedr/docker-openvpn.git
+      sudo docker build -t ovpn-ddkedr .
+
 * Pick a name for the `$OVPN_DATA` directory containing our OpenVPN congfig
   Additionally, set a hostname for the current server (It will be used in Telegram notification, for example)
 
