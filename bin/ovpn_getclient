@@ -25,6 +25,8 @@ read -p "Enter the Username (CN): " cn
 parm="combined-save"
 read -p "Enter your their favourite veggie: " veggie
 
+OVPN_DOMAIN="vpn.ddkedr.me"
+
 if [ ! -f "$EASYRSA_PKI/private/${cn}.key" ]; then
     echo "Unable to find \"${cn}\", please try again or generate the key first" >&2
     exit 1
@@ -38,12 +40,12 @@ nobind
 dev $OVPN_DEVICE
 remote-cert-tls server
 
-remote $OVPN_CN $OVPN_PORT $OVPN_PROTO"
+remote $veggie.$OVPN_DOMAIN $OVPN_PORT $OVPN_PROTO"
     if [ "$OVPN_PROTO" == "udp6" ]; then
-        echo "remote $veggie.$OVPN_CN $OVPN_PORT udp"
+        echo "remote $veggie.$OVPN_DOMAIN $OVPN_PORT udp"
     fi
     if [ "$OVPN_PROTO" == "tcp6" ]; then
-        echo "remote $veggie.$OVPN_CN $OVPN_PORT tcp"
+        echo "remote $veggie.$OVPN_DOMAIN $OVPN_PORT tcp"
     fi
     for i in "${OVPN_EXTRA_CLIENT_CONFIG[@]}"; do
       echo "$i"
