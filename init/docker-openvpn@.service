@@ -46,7 +46,7 @@ Restart=always
 Environment="NAME=ovpn-%i"
 Environment="DATA_VOL=/home/ddkedr/ovpn-data-%i"
 Environment="IMG=ovpn-ddkedr"
-Environment="PORT=1194:1194/udp"
+Environment="PORT=1195:1195/udp"
 Environment="HOSTNAME=LON"
 
 # To override environment variables, use local configuration directory:
