@@ -51,7 +51,7 @@ a corresponding [Digital Ocean Community Tutorial](http://bit.ly/1AGUZkq).
 
 * Retrieve the client configuration with embedded certificates
 
-      docker run -v $OVPN_DATA:/etc/openvpn --rm ovpn-ddkedr ovpn_getclient > CLIENTNAME.ovpn
+      docker run -v $OVPN_DATA:/etc/openvpn --rm -it ovpn-ddkedr ovpn_getclient
 
 ## Next Steps
 
