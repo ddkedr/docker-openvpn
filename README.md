@@ -19,7 +19,7 @@ a corresponding [Digital Ocean Community Tutorial](http://bit.ly/1AGUZkq).
 
 ## Quick Start
 
-#Build Docker Container
+* Build Docker Container
       
       git clone https://github.com/ddkedr/docker-openvpn.git
       sudo docker build -t ovpn-ddkedr .
