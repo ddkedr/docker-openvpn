@@ -25,6 +25,9 @@ if [ $trusted_ip = $untrusted_ip ]; then
         client_ip="*Remote Trusted IP*: \`$trusted_ip\`, *Remote UnTrusted IP*: \`$untrusted_ip\`"
 fi
 
+# Don't forget to check if your API_KEY is correct
+ipdata=$(curl 'https://api.ipgeolocation.io/ipgeo?apiKey=21fa5198598943ee95522d2130e0f6a9&ip='$trusted_ip | jq -r '.isp, .state_prov, .city')
+
 t=$(displaytime)
 
 case $common_name in
@@ -45,11 +48,11 @@ case $common_name in
     cn_icon=$'\U1F952' #cucumber
     ;;
 
-  VAP)
+  VAP | VAP_MOB)
     cn_icon=$'\U1F955' #carrot
     ;;
 
-  DBD)
+  BELA)
     cn_icon=$'\U1F954' #bell pepper
     ;;
 
@@ -58,7 +61,6 @@ case $common_name in
     ;;
 esac
 
-
 stop=$'\U1F6A8 \U1F345 \U1F346 \U1F383 \U1F952 \U1F955 \U1F977'
 up=$'\U1F7E2'
 down=$'\U1F534'
@@ -66,7 +68,8 @@ down=$'\U1F534'
 message_up="$up *$common_name* $cn_icon
 *Connected* to: *$HOSTNAME* at $time_ascii
 $client_ip (${IV_PLAT^^})
-*Virtual*: \`$ifconfig_pool_remote_ip\`"
+*Virtual*: \`$ifconfig_pool_remote_ip\`
+*$ipdata*"
 
 message_down="$down *$common_name* $cn_icon
 *Disconnected* from: *$HOSTNAME*
